@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校园导航 — 坐标采集工具</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; background: #1a1a2e; color: #e0e0e0; display: flex; height: 100vh; overflow: hidden; }
+#sidebar { width: 340px; min-width: 340px; background: #16213e; display: flex; flex-direction: column; border-right: 1px solid #0f3460; }
+#toolbar { padding: 12px; border-bottom: 1px solid #0f3460; display: flex; gap: 6px; flex-wrap: wrap; }
+#toolbar button { padding: 6px 14px; border: 1px solid #0f3460; background: #1a1a2e; color: #e0e0e0; border-radius: 4px; cursor: pointer; font-size: 13px; white-space: nowrap; }
+#toolbar button:hover { background: #0f3460; }
+#toolbar button.active { background: #e94560; border-color: #e94560; color: #fff; }
+#toolbar button.export { background: #0f3460; border-color: #00b894; color: #00b894; }
+#panel { flex: 1; overflow-y: auto; padding: 8px; }
+.section-title { font-size: 12px; color: #888; text-transform: uppercase; padding: 8px 4px 4px; letter-spacing: 1px; border-bottom: 1px solid #0f3460; margin-bottom: 6px; display: flex; justify-content: space-between; }
+.section-title span { color: #e94560; }
+.card { background: #1a1a2e; border: 1px solid #0f3460; border-radius: 6px; padding: 10px; margin-bottom: 6px; }
+.card.selected { border-color: #e94560; background: #1f1a2e; }
+.card .row { display: flex; gap: 6px; align-items: center; margin-bottom: 4px; }
+.card .row:last-child { margin-bottom: 0; }
+.card input, .card select { background: #16213e; border: 1px solid #0f3460; color: #e0e0e0; padding: 4px 8px; border-radius: 3px; font-size: 12px; width: 100%; }
+.card .name { font-weight: bold; color: #e94560; font-size: 14px; }
+.card .coords { font-size: 11px; color: #888; }
+.card .btn-row { display: flex; gap: 4px; margin-top: 4px; }
+.card .btn-row button { flex: 1; padding: 3px 8px; font-size: 11px; background: #16213e; border: 1px solid #0f3460; color: #aaa; border-radius: 3px; cursor: pointer; }
+.card .btn-row button:hover { background: #0f3460; color: #fff; }
+.card .btn-row button.danger { border-color: #e94560; color: #e94560; }
+#map-container { flex: 1; position: relative; overflow: hidden; cursor: crosshair; }
+#map-container.panning { cursor: grab; }
+#map-container.panning:active { cursor: grabbing; }
+canvas { position: absolute; top: 0; left: 0; }
+#status { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.8); padding: 6px 12px; border-radius: 4px; font-size: 12px; color: #aaa; pointer-events: none; }
+#hint { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); background: rgba(233,69,96,0.9); padding: 6px 16px; border-radius: 4px; font-size: 13px; pointer-events: none; display: none; }
+.empty-state { color: #555; text-align: center; padding: 40px 20px; font-size: 13px; }
+input[type="file"] { display: none; }
+label.file-btn { display: inline-block; padding: 6px 14px; border: 1px solid #0f3460; background: #1a1a2e; color: #e0e0e0; border-radius: 4px; cursor: pointer; font-size: 13px; }
+label.file-btn:hover { background: #0f3460; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div id="toolbar">
+    <label class="file-btn" for="mapFile">📁 加载底图</label>
+    <input type="file" id="mapFile" accept="image/*">
+    <button id="btnAdd" class="active" title="模式: 点击地图添加地点">📍 添加地点</button>
+    <button id="btnEdge" title="模式: 依次点击两个地点连线">🔗 连线模式</button>
+    <button id="btnExport" class="export">📤 导出JSON</button>
+  </div>
+  <div id="panel">
+    <div style="padding:8px;font-size:12px;color:#888;">
+      提示：点击地图添加地点，连线模式点击两个地点建立道路
+    </div>
+    <div class="section-title">📍 地点列表 <span id="vertexCount">0</span></div>
+    <div id="vertexList"></div>
+    <div class="section-title">🔗 道路列表 <span id="edgeCount">0</span></div>
+    <div id="edgeList"></div>
+  </div>
+</div>
+
+<div id="map-container">
+  <canvas id="canvas"></canvas>
+  <div id="status">坐标: (-, -) | 缩放: 100% | 滚轮缩放 · 右键拖拽 · 点击添加地点</div>
+  <div id="hint"></div>
+</div>
+
+<script>
+// ========== 状态管理 ==========
+const state = {
+  vertices: [],      // { id, name, type, x, y, description }
+  edges: [],         // { id, fromId, toId, weight, oneWay, forbidden, roadType }
+  mode: 'add',       // 'add' | 'edge'
+  edgeSource: null,  // 连线模式下第一个选中的地点 ID
+  selectedVertex: null,
+  image: null,
+  imgNaturalW: 0,
+  imgNaturalH: 0,
+  zoom: 1,
+  panX: 0,
+  panY: 0,
+  dragging: false,
+  dragStartX: 0,
+  dragStartY: 0,
+  dragPanStartX: 0,
+  dragPanStartY: 0,
+  mouseX: 0,
+  mouseY: 0,
+  idPrefix: ''
+};
+
+// ========== DOM 引用 ==========
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const container = document.getElementById('map-container');
+const vertexListEl = document.getElementById('vertexList');
+const edgeListEl = document.getElementById('edgeList');
+const statusEl = document.getElementById('status');
+const hintEl = document.getElementById('hint');
+const mapFileInput = document.getElementById('mapFile');
+
+// ========== 自动保存/恢复 ==========
+const STORAGE_KEY = 'nav_coord_collector';
+function saveState() {
+  const toSave = {
+    vertices: state.vertices,
+    edges: state.edges,
+    idPrefix: state.idPrefix
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+}
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const data = JSON.parse(raw);
+      state.vertices = data.vertices || [];
+      state.edges = data.edges || [];
+      state.idPrefix = data.idPrefix || '';
+      return true;
+    }
+  } catch(e) {}
+  return false;
+}
+
+// ========== 工具函数 ==========
+let idCounter = 1;
+function genVertexId() {
+  const prefix = state.idPrefix || 'SCH';
+  const num = String(idCounter++).padStart(3, '0');
+  return `${prefix}-${num}`;
+}
+function genEdgeId() {
+  return `E-${Date.now()}-${Math.random().toString(36).slice(2,6)}`;
+}
+
+function screenToImage(sx, sy) {
+  const x = (sx - state.panX) / state.zoom;
+  const y = (sy - state.panY) / state.zoom;
+  return { x: Math.round(x * 100) / 100, y: Math.round(y * 100) / 100 };
+}
+function imageToScreen(ix, iy) {
+  return { x: ix * state.zoom + state.panX, y: iy * state.zoom + state.panY };
+}
+
+function findVertexAt(sx, sy) {
+  const threshold = 12;
+  for (let i = state.vertices.length - 1; i >= 0; i--) {
+    const v = state.vertices[i];
+    const p = imageToScreen(v.x, v.y);
+    const dx = sx - p.x, dy = sy - p.y;
+    if (Math.sqrt(dx*dx + dy*dy) < threshold) return v;
+  }
+  return null;
+}
+function findEdge(fromId, toId) {
+  return state.edges.find(e =>
+    (e.fromId === fromId && e.toId === toId) ||
+    (e.fromId === toId && e.toId === fromId)
+  );
+}
+function vertexById(id) {
+  return state.vertices.find(v => v.id === id);
+}
+
+// ========== 渲染 ==========
+function draw() {
+  const rect = container.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 底图
+  if (state.image) {
+    ctx.drawImage(state.image, state.panX, state.panY, state.imgNaturalW * state.zoom, state.imgNaturalH * state.zoom);
+  } else {
+    ctx.fillStyle = '#222';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#555';
+    ctx.font = '18px "Microsoft YaHei"';
+    ctx.textAlign = 'center';
+    ctx.fillText('点击左上角「加载底图」选择校园地图图片', canvas.width / 2, canvas.height / 2);
+  }
+
+  // 道路
+  state.edges.forEach(e => {
+    const from = vertexById(e.fromId);
+    const to = vertexById(e.toId);
+    if (!from || !to) return;
+    const p1 = imageToScreen(from.x, from.y);
+    const p2 = imageToScreen(to.x, to.y);
+
+    const isSelected = state.selectedVertex && (e.fromId === state.selectedVertex.id || e.toId === state.selectedVertex.id);
+
+    ctx.beginPath();
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.strokeStyle = e.oneWay ? '#fdcb6e' : (isSelected ? '#e94560' : '#00b894');
+    ctx.lineWidth = isSelected ? 2.5 : 1.5;
+    ctx.setLineDash(e.forbidden ? [6, 4] : []);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // 距离标注
+    const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+    ctx.fillStyle = '#fff';
+    ctx.font = '10px "Microsoft YaHei"';
+    ctx.textAlign = 'center';
+    ctx.fillText(`${e.weight.toFixed(0)}m`, mx, my - 6);
+  });
+
+  // 地点
+  state.vertices.forEach(v => {
+    const p = imageToScreen(v.x, v.y);
+    const isSelected = state.selectedVertex === v;
+    const isEdgeSource = state.edgeSource === v;
+
+    // 光晕
+    if (isSelected || isEdgeSource) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 11, 0, Math.PI * 2);
+      ctx.fillStyle = isEdgeSource ? 'rgba(253,203,110,0.4)' : 'rgba(233,69,96,0.4)';
+      ctx.fill();
+    }
+
+    // 圆点
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, isSelected ? 8 : 5, 0, Math.PI * 2);
+    const colors = {
+      TEACHING_BUILDING: '#0984e3',
+      DORMITORY: '#6c5ce7',
+      CANTEEN: '#e17055',
+      LIBRARY: '#00b894',
+      GATE: '#636e72',
+      OFFICE: '#fdcb6e',
+      SPORTS_CENTER: '#00cec9',
+      OTHER: '#b2bec3'
+    };
+    ctx.fillStyle = colors[v.type] || '#b2bec3';
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // 标签
+    ctx.fillStyle = '#fff';
+    ctx.font = `${isSelected ? 'bold ' : ''}11px "Microsoft YaHei"`;
+    ctx.textAlign = 'center';
+    ctx.fillText(v.name, p.x, p.y - 12);
+  });
+
+  // 连线模式的临时线
+  if (state.mode === 'edge' && state.edgeSource) {
+    const p = imageToScreen(state.edgeSource.x, state.edgeSource.y);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    ctx.lineTo(state.mouseX, state.mouseY);
+    ctx.strokeStyle = '#fdcb6e';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 4]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+}
+
+function renderVertexList() {
+  document.getElementById('vertexCount').textContent = state.vertices.length;
+  if (state.vertices.length === 0) {
+    vertexListEl.innerHTML = '<div class="empty-state">暂无地点，点击地图添加</div>';
+  } else {
+    vertexListEl.innerHTML = state.vertices.map(v => {
+      const typeNames = {
+        TEACHING_BUILDING: '教学楼', DORMITORY: '宿舍', CANTEEN: '食堂',
+        LIBRARY: '图书馆', GATE: '大门', OFFICE: '办公室', SPORTS_CENTER: '运动场', OTHER: '其他'
+      };
+      const sel = state.selectedVertex === v ? ' selected' : '';
+      const edgeSel = state.edgeSource === v ? ' style="border-color:#fdcb6e;"' : '';
+      return `<div class="card${sel}"${edgeSel} data-id="${v.id}">
+        <div class="name">${v.name}</div>
+        <div class="row">
+          <select onchange="updateVertex('${v.id}','type',this.value)" value="${v.type}">
+            ${Object.entries(typeNames).map(([k,label]) =>
+              `<option value="${k}" ${v.type===k?'selected':''}>${label}</option>`
+            ).join('')}
+          </select>
+        </div>
+        <div class="coords">坐标: (${v.x}, ${v.y}) | ID: ${v.id}</div>
+        <div class="btn-row">
+          <button onclick="selectVertex('${v.id}')">📍 定位</button>
+          <button onclick="deleteVertex('${v.id}')" class="danger">🗑 删除</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+}
+
+function renderEdgeList() {
+  document.getElementById('edgeCount').textContent = state.edges.length;
+  if (state.edges.length === 0) {
+    edgeListEl.innerHTML = '<div class="empty-state">暂无道路，切换到连线模式建立</div>';
+  } else {
+    edgeListEl.innerHTML = state.edges.map(e => {
+      const from = vertexById(e.fromId);
+      const to = vertexById(e.toId);
+      const fromName = from ? from.name : e.fromId;
+      const toName = to ? to.name : e.toId;
+      const roadTypes = { MAIN_ROAD: '主干道', PATH: '小路', STAIRS: '楼梯' };
+      return `<div class="card">
+        <div style="font-size:13px;">${fromName} ↔ ${toName}</div>
+        <div class="row">
+          <span style="font-size:11px;">距离: <input value="${e.weight}" style="width:60px" onchange="updateEdge('${e.id}','weight',this.value)" type="number" step="0.1"> m</span>
+          <select onchange="updateEdge('${e.id}','roadType',this.value)" style="width:80px">
+            ${Object.entries(roadTypes).map(([k,label]) =>
+              `<option value="${k}" ${e.roadType===k?'selected':''}>${label}</option>`
+            ).join('')}
+          </select>
+        </div>
+        <div class="row">
+          <label style="font-size:11px;"><input type="checkbox" ${e.oneWay?'checked':''} onchange="updateEdge('${e.id}','oneWay',this.checked)"> 单行</label>
+          <label style="font-size:11px;"><input type="checkbox" ${e.forbidden?'checked':''} onchange="updateEdge('${e.id}','forbidden',this.checked)"> 禁行</label>
+        </div>
+        <div class="btn-row">
+          <button onclick="deleteEdge('${e.id}')" class="danger">🗑 删除</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+}
+
+function renderAll() { draw(); renderVertexList(); renderEdgeList(); saveState(); }
+
+// ========== 事件处理 ==========
+function selectVertex(id) {
+  state.selectedVertex = vertexById(id) || null;
+  state.edgeSource = null;
+  renderAll();
+}
+function deleteVertex(id) {
+  if (!confirm('删除此地点也会删除关联的所有道路，确定？')) return;
+  state.vertices = state.vertices.filter(v => v.id !== id);
+  state.edges = state.edges.filter(e => e.fromId !== id && e.toId !== id);
+  if (state.selectedVertex && state.selectedVertex.id === id) state.selectedVertex = null;
+  if (state.edgeSource && state.edgeSource.id === id) state.edgeSource = null;
+  renderAll();
+}
+function deleteEdge(id) {
+  state.edges = state.edges.filter(e => e.id !== id);
+  renderAll();
+}
+function updateVertex(id, field, value) {
+  const v = vertexById(id);
+  if (v) { v[field] = value; renderAll(); }
+}
+function updateEdge(id, field, value) {
+  const e = state.edges.find(e => e.id === id);
+  if (e) {
+    if (field === 'weight') e.weight = parseFloat(value) || 0;
+    if (field === 'oneWay') e.oneWay = value === true || value === 'true';
+    if (field === 'forbidden') e.forbidden = value === true || value === 'true';
+    if (field === 'roadType') e.roadType = value;
+    renderAll();
+  }
+}
+
+// 画布鼠标事件
+canvas.addEventListener('mousedown', (e) => {
+  if (e.button === 2) { // 右键拖拽
+    state.dragging = true;
+    state.dragStartX = e.clientX;
+    state.dragStartY = e.clientY;
+    state.dragPanStartX = state.panX;
+    state.dragPanStartY = state.panY;
+    container.classList.add('panning');
+    return;
+  }
+  if (e.button !== 0) return;
+
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+
+  if (state.mode === 'add') {
+    const pos = screenToImage(sx, sy);
+    const name = prompt('请输入地点名称：');
+    if (!name || !name.trim()) return;
+    const newVertex = {
+      id: genVertexId(),
+      name: name.trim(),
+      type: 'OTHER',
+      x: pos.x,
+      y: pos.y,
+      description: ''
+    };
+    state.vertices.push(newVertex);
+    state.selectedVertex = newVertex;
+    renderAll();
+  }
+
+  if (state.mode === 'edge') {
+    const hit = findVertexAt(sx, sy);
+    if (!hit) return;
+    if (!state.edgeSource) {
+      state.edgeSource = hit;
+      showHint(`已选择「${hit.name}」，请点击另一个地点完成连线`);
+      renderAll();
+    } else if (hit.id === state.edgeSource.id) {
+      state.edgeSource = null;
+      hideHint();
+      renderAll();
+    } else {
+      // 检查是否已有边
+      const existing = findEdge(state.edgeSource.id, hit.id);
+      if (existing) {
+        alert('这两个地点之间已存在道路！');
+        state.edgeSource = null;
+        hideHint();
+        renderAll();
+        return;
+      }
+      const weightStr = prompt(`请输入「${state.edgeSource.name}」到「${hit.name}」的距离（米）：`);
+      if (!weightStr || isNaN(parseFloat(weightStr))) {
+        state.edgeSource = null;
+        hideHint();
+        renderAll();
+        return;
+      }
+      state.edges.push({
+        id: genEdgeId(),
+        fromId: state.edgeSource.id,
+        toId: hit.id,
+        weight: parseFloat(weightStr),
+        oneWay: false,
+        forbidden: false,
+        roadType: 'PATH'
+      });
+      state.edgeSource = null;
+      hideHint();
+      renderAll();
+    }
+  }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  state.mouseX = e.clientX - rect.left;
+  state.mouseY = e.clientY - rect.top;
+
+  if (state.dragging) {
+    state.panX = state.dragPanStartX + (e.clientX - state.dragStartX);
+    state.panY = state.dragPanStartY + (e.clientY - state.dragStartY);
+  }
+
+  const pos = screenToImage(state.mouseX, state.mouseY);
+  statusEl.textContent = `坐标: (${pos.x.toFixed(0)}, ${pos.y.toFixed(0)}) | 缩放: ${(state.zoom*100).toFixed(0)}% | 滚轮缩放 · 右键拖拽 · 点击${state.mode==='add'?'添加地点':'连线'}`;
+  draw();
+});
+
+canvas.addEventListener('mouseup', () => { state.dragging = false; container.classList.remove('panning'); });
+canvas.addEventListener('mouseleave', () => { state.dragging = false; container.classList.remove('panning'); });
+canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+// 滚轮缩放
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  const oldZoom = state.zoom;
+  const delta = e.deltaY > 0 ? -0.1 : 0.1;
+  state.zoom = Math.max(0.1, Math.min(5, state.zoom + delta));
+  // 以鼠标位置为中心缩放
+  state.panX = mx - (mx - state.panX) * state.zoom / oldZoom;
+  state.panY = my - (my - state.panY) * state.zoom / oldZoom;
+  renderAll();
+});
+
+// 加载图片
+mapFileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const img = new Image();
+    img.onload = () => {
+      state.image = img;
+      state.imgNaturalW = img.naturalWidth;
+      state.imgNaturalH = img.naturalHeight;
+      // 自动缩放到适合窗口
+      const rect = container.getBoundingClientRect();
+      const scaleW = (rect.width * 0.85) / state.imgNaturalW;
+      const scaleH = (rect.height * 0.85) / state.imgNaturalH;
+      state.zoom = Math.min(scaleW, scaleH, 1);
+      state.panX = (rect.width - state.imgNaturalW * state.zoom) / 2;
+      state.panY = (rect.height - state.imgNaturalH * state.zoom) / 2;
+      // 默认 ID 前缀基于文件名
+      const base = file.name.replace(/\.[^.]+$/, '');
+      state.idPrefix = base.toUpperCase().replace(/[^A-Z0-9]/g, '-').slice(0, 20);
+      renderAll();
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+// 模式切换
+document.getElementById('btnAdd').addEventListener('click', () => {
+  state.mode = 'add';
+  state.edgeSource = null;
+  hideHint();
+  document.getElementById('btnAdd').classList.add('active');
+  document.getElementById('btnEdge').classList.remove('active');
+  renderAll();
+});
+document.getElementById('btnEdge').addEventListener('click', () => {
+  state.mode = 'edge';
+  state.edgeSource = null;
+  hideHint();
+  document.getElementById('btnEdge').classList.add('active');
+  document.getElementById('btnAdd').classList.remove('active');
+  renderAll();
+});
+
+// 导出
+document.getElementById('btnExport').addEventListener('click', () => {
+  const vertexJson = JSON.stringify(state.vertices.map(v => ({
+    id: v.id, name: v.name, type: v.type, x: v.x, y: v.y, description: v.description
+  })), null, 2);
+  const edgeJson = JSON.stringify(state.edges.map(e => ({
+    fromId: e.fromId, toId: e.toId, weight: e.weight, oneWay: e.oneWay, forbidden: e.forbidden, roadType: e.roadType
+  })), null, 2);
+  const metaJson = JSON.stringify([{ version: 2, updatedAt: String(Date.now()) }], null, 2);
+
+  // 触发下载
+  downloadFile('vertex.json', vertexJson);
+  setTimeout(() => downloadFile('edge.json', edgeJson), 200);
+  setTimeout(() => downloadFile('meta.json', metaJson), 400);
+  alert('已导出 vertex.json、edge.json、meta.json 三个文件，将它们放到 data/ 目录替换原文件即可。');
+});
+
+function downloadFile(name, content) {
+  const blob = new Blob([content], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = name; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// 提示
+function showHint(msg) { hintEl.textContent = msg; hintEl.style.display = 'block'; }
+function hideHint() { hintEl.style.display = 'none'; }
+
+// 键盘快捷键
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    state.edgeSource = null;
+    state.selectedVertex = null;
+    hideHint();
+    renderAll();
+  }
+  if (e.key === 'Delete' && state.selectedVertex) {
+    deleteVertex(state.selectedVertex.id);
+  }
+  if (e.key === '1') {
+    document.getElementById('btnAdd').click();
+  }
+  if (e.key === '2') {
+    document.getElementById('btnEdge').click();
+  }
+});
+
+// 窗口缩放
+window.addEventListener('resize', () => { renderAll(); });
+
+// 自动恢复
+if (loadState()) {
+  idCounter = state.vertices.length + 1;
+  console.log('已恢复上次的编辑数据');
+}
+
+// 初始渲染
+renderAll();
+</script>
+</body>
+</html>

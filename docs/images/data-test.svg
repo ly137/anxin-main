@@ -1,0 +1,39 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#F4F7FB"/>
+  <text x="72" y="86" font-family="Microsoft YaHei, Arial" font-size="34" font-weight="700" fill="#172033">数据持久化与测试覆盖</text>
+  <text x="72" y="122" font-family="Microsoft YaHei, Arial" font-size="17" fill="#637083">本地 JSON 数据、备份恢复、单元测试共同保障系统可维护性</text>
+
+  <rect x="72" y="168" width="312" height="406" rx="20" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <text x="108" y="218" font-family="Microsoft YaHei, Arial" font-size="23" font-weight="700" fill="#172033">data/</text>
+  <rect x="108" y="256" width="238" height="48" rx="12" fill="#EAF2FF"/>
+  <text x="134" y="286" font-family="Microsoft YaHei, Arial" font-size="16" fill="#1F4EA3">vertex.json 地点</text>
+  <rect x="108" y="322" width="238" height="48" rx="12" fill="#EAF7EF"/>
+  <text x="134" y="352" font-family="Microsoft YaHei, Arial" font-size="16" fill="#15803D">edge.json 道路</text>
+  <rect x="108" y="388" width="238" height="48" rx="12" fill="#FFF7E6"/>
+  <text x="134" y="418" font-family="Microsoft YaHei, Arial" font-size="16" fill="#B45309">user.json 用户</text>
+  <rect x="108" y="454" width="238" height="48" rx="12" fill="#F3E8FF"/>
+  <text x="134" y="484" font-family="Microsoft YaHei, Arial" font-size="16" fill="#7E22CE">meta.json 版本</text>
+
+  <rect x="444" y="168" width="312" height="406" rx="20" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <text x="480" y="218" font-family="Microsoft YaHei, Arial" font-size="23" font-weight="700" fill="#172033">核心服务</text>
+  <circle cx="600" cy="302" r="74" fill="#EAF2FF" stroke="#BAD6FF"/>
+  <text x="559" y="296" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="700" fill="#1F4EA3">读取</text>
+  <text x="559" y="326" font-family="Microsoft YaHei, Arial" font-size="18" font-weight="700" fill="#1F4EA3">保存</text>
+  <path d="M600 392 L600 458" stroke="#94A3B8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M576 438 L600 462 L624 438" stroke="#94A3B8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="502" y="480" width="196" height="52" rx="14" fill="#F8FAFD" stroke="#D7DEE8"/>
+  <text x="544" y="513" font-family="Microsoft YaHei, Arial" font-size="16" fill="#172033">备份 / 恢复</text>
+
+  <rect x="816" y="168" width="312" height="406" rx="20" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <text x="852" y="218" font-family="Microsoft YaHei, Arial" font-size="23" font-weight="700" fill="#172033">JUnit 测试</text>
+  <rect x="852" y="260" width="232" height="44" rx="12" fill="#ECFDF5"/>
+  <text x="878" y="288" font-family="Microsoft YaHei, Arial" font-size="16" fill="#047857">图结构与模型</text>
+  <rect x="852" y="320" width="232" height="44" rx="12" fill="#ECFDF5"/>
+  <text x="878" y="348" font-family="Microsoft YaHei, Arial" font-size="16" fill="#047857">Dijkstra / A*</text>
+  <rect x="852" y="380" width="232" height="44" rx="12" fill="#ECFDF5"/>
+  <text x="878" y="408" font-family="Microsoft YaHei, Arial" font-size="16" fill="#047857">认证与权限</text>
+  <rect x="852" y="440" width="232" height="44" rx="12" fill="#ECFDF5"/>
+  <text x="878" y="468" font-family="Microsoft YaHei, Arial" font-size="16" fill="#047857">持久化服务</text>
+  <rect x="852" y="500" width="232" height="44" rx="12" fill="#ECFDF5"/>
+  <text x="878" y="528" font-family="Microsoft YaHei, Arial" font-size="16" fill="#047857">地图交互逻辑</text>
+</svg>

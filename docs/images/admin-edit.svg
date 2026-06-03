@@ -1,0 +1,38 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#F4F7FB"/>
+  <rect x="46" y="42" width="1108" height="636" rx="24" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <rect x="80" y="82" width="1038" height="58" rx="18" fill="#172033"/>
+  <text x="112" y="119" font-family="Microsoft YaHei, Arial" font-size="22" font-weight="700" fill="#FFFFFF">管理员地图编辑模式</text>
+  <rect x="866" y="96" width="98" height="30" rx="15" fill="#28415F"/>
+  <text x="891" y="117" font-family="Microsoft YaHei, Arial" font-size="14" fill="#CFE0FF">撤销</text>
+  <rect x="980" y="96" width="98" height="30" rx="15" fill="#28415F"/>
+  <text x="1005" y="117" font-family="Microsoft YaHei, Arial" font-size="14" fill="#CFE0FF">重做</text>
+
+  <rect x="80" y="166" width="288" height="500" rx="18" fill="#F8FAFD" stroke="#DDE5EF"/>
+  <text x="112" y="208" font-family="Microsoft YaHei, Arial" font-size="22" font-weight="700" fill="#172033">编辑工具</text>
+  <rect x="112" y="242" width="224" height="44" rx="12" fill="#1F6FEB"/>
+  <text x="164" y="270" font-family="Microsoft YaHei, Arial" font-size="16" fill="#FFFFFF">新增地点</text>
+  <rect x="112" y="302" width="224" height="44" rx="12" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <text x="164" y="330" font-family="Microsoft YaHei, Arial" font-size="16" fill="#172033">连接道路</text>
+  <rect x="112" y="362" width="224" height="44" rx="12" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <text x="164" y="390" font-family="Microsoft YaHei, Arial" font-size="16" fill="#172033">移动地点</text>
+  <rect x="112" y="422" width="224" height="44" rx="12" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <text x="164" y="450" font-family="Microsoft YaHei, Arial" font-size="16" fill="#172033">删除对象</text>
+  <rect x="112" y="506" width="224" height="96" rx="14" fill="#FFF7E6" stroke="#F2D394"/>
+  <text x="136" y="540" font-family="Microsoft YaHei, Arial" font-size="16" font-weight="700" fill="#92400E">道路禁行</text>
+  <text x="136" y="570" font-family="Microsoft YaHei, Arial" font-size="15" fill="#72511D">可临时封闭施工路段</text>
+
+  <rect x="400" y="166" width="718" height="500" rx="18" fill="#EEF7F1" stroke="#DDE5EF"/>
+  <path d="M458 560 C572 508 650 448 730 430 C828 408 898 330 1050 276" stroke="#9CA3AF" stroke-width="20" stroke-linecap="round"/>
+  <path d="M500 240 C620 278 720 292 850 246 C940 214 1006 194 1070 182" stroke="#9CA3AF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M650 190 C640 300 630 430 634 556" stroke="#B8C0CC" stroke-width="14" stroke-linecap="round"/>
+  <path d="M730 430 C804 408 874 352 962 314" stroke="#DC2626" stroke-width="10" stroke-linecap="round" stroke-dasharray="18 14"/>
+  <circle cx="458" cy="560" r="16" fill="#FFFFFF" stroke="#16A34A" stroke-width="5"/>
+  <circle cx="730" cy="430" r="18" fill="#FFFFFF" stroke="#1F6FEB" stroke-width="6"/>
+  <circle cx="962" cy="314" r="16" fill="#FFFFFF" stroke="#DC2626" stroke-width="5"/>
+  <circle cx="1070" cy="182" r="16" fill="#FFFFFF" stroke="#16A34A" stroke-width="5"/>
+  <rect x="826" y="498" width="238" height="92" rx="16" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <text x="852" y="532" font-family="Microsoft YaHei, Arial" font-size="17" font-weight="700" fill="#172033">选中道路</text>
+  <text x="852" y="560" font-family="Microsoft YaHei, Arial" font-size="15" fill="#637083">状态：禁行</text>
+  <text x="852" y="584" font-family="Microsoft YaHei, Arial" font-size="15" fill="#DC2626">不会参与路线规划</text>
+</svg>

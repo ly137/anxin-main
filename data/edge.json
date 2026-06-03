@@ -1,0 +1,1018 @@
+[
+  {
+    "fromId": "-----20260526223406--013",
+    "toId": "-----20260526223406--015",
+    "weight": 38.04,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--003",
+    "toId": "-----20260526223406--005",
+    "weight": 43.68,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--015",
+    "toId": "-----20260526223406--017",
+    "weight": 46.43,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--029",
+    "toId": "-----20260526223406--030",
+    "weight": 47.21,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--022",
+    "toId": "-----20260526223406--024",
+    "weight": 49.14,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--018",
+    "toId": "-----20260526223406--019",
+    "weight": 49.23,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--016",
+    "toId": "-----20260526223406--020",
+    "weight": 50.51,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--008",
+    "toId": "-----20260526223406--009",
+    "weight": 57.01,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--001",
+    "toId": "-----20260526223406--003",
+    "weight": 59.09,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--027",
+    "toId": "-----20260526223406--031",
+    "weight": 59.25,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--041",
+    "toId": "-----20260526223406--042",
+    "weight": 60.82,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--016",
+    "toId": "-----20260526223406--017",
+    "weight": 63.92,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--012",
+    "toId": "-----20260526223406--014",
+    "weight": 66.61,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--030",
+    "toId": "-----20260526223406--032",
+    "weight": 67.1,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--009",
+    "toId": "-----20260526223406--010",
+    "weight": 70.19,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--014",
+    "toId": "-----20260526223406--015",
+    "weight": 75.64,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--021",
+    "toId": "-----20260526223406--022",
+    "weight": 78.33,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--019",
+    "toId": "-----20260526223406--020",
+    "weight": 80.31,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--005",
+    "toId": "-----20260526223406--007",
+    "weight": 80.75,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--001",
+    "toId": "-----20260526223406--004",
+    "weight": 81.28,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--036",
+    "toId": "-----20260526223406--038",
+    "weight": 81.47,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--026",
+    "toId": "-----20260526223406--027",
+    "weight": 81.96,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--032",
+    "toId": "-----20260526223406--033",
+    "weight": 84.89,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--005",
+    "toId": "-----20260526223406--008",
+    "weight": 87.71,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--040",
+    "toId": "-----20260526223406--041",
+    "weight": 88.68,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--021",
+    "toId": "-----20260526223406--023",
+    "weight": 88.94,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--024",
+    "toId": "-----20260526223406--025",
+    "weight": 89.74,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--010",
+    "toId": "-----20260526223406--011",
+    "weight": 90.48,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--017",
+    "toId": "-----20260526223406--037",
+    "weight": 92.97,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--039",
+    "toId": "-----20260526223406--043",
+    "weight": 96.73,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--018",
+    "toId": "-----20260526223406--022",
+    "weight": 100.3,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--025",
+    "toId": "-----20260526223406--029",
+    "weight": 101.87,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--002",
+    "toId": "-----20260526223406--003",
+    "weight": 102.52,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--006",
+    "toId": "-----20260526223406--007",
+    "weight": 103.02,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--034",
+    "toId": "-----20260526223406--035",
+    "weight": 106.41,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--011",
+    "toId": "-----20260526223406--012",
+    "weight": 108.31,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--011",
+    "toId": "-----20260526223406--038",
+    "weight": 112.77,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--025",
+    "toId": "-----20260526223406--026",
+    "weight": 113.39,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--038",
+    "toId": "-----20260526223406--043",
+    "weight": 148.16,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--043",
+    "toId": "-----20260526223406--044",
+    "weight": 153.2,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--039",
+    "toId": "-----20260526223406--042",
+    "weight": 164.43,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--034",
+    "toId": "-----20260526223406--044",
+    "weight": 184.43,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "MAIN_ROAD"
+  },
+  {
+    "fromId": "-----20260526223406--001",
+    "toId": "-----20260526223406--005",
+    "weight": 88.96,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--001",
+    "toId": "-----20260526223406--002",
+    "weight": 136.75,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--002",
+    "toId": "-----20260526223406--010",
+    "weight": 103.59,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--002",
+    "toId": "-----20260526223406--008",
+    "weight": 126.17,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--003",
+    "toId": "-----20260526223406--004",
+    "weight": 94.59,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--003",
+    "toId": "-----20260526223406--008",
+    "weight": 106.21,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--004",
+    "toId": "-----20260526223406--005",
+    "weight": 82.46,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--004",
+    "toId": "-----20260526223406--006",
+    "weight": 103.73,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--005",
+    "toId": "-----20260526223406--002",
+    "weight": 133.93,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--005",
+    "toId": "-----20260526223406--006",
+    "weight": 138.13,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--006",
+    "toId": "-----20260526223406--003",
+    "weight": 174,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--006",
+    "toId": "-----20260526223406--001",
+    "weight": 182.48,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--007",
+    "toId": "-----20260526223406--008",
+    "weight": 95.85,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--007",
+    "toId": "-----20260526223406--004",
+    "weight": 121.49,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--008",
+    "toId": "-----20260526223406--010",
+    "weight": 116.09,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--008",
+    "toId": "-----20260526223406--038",
+    "weight": 152.31,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--009",
+    "toId": "-----20260526223406--038",
+    "weight": 115.7,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--009",
+    "toId": "-----20260526223406--011",
+    "weight": 116.85,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--010",
+    "toId": "-----20260526223406--012",
+    "weight": 140.57,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--010",
+    "toId": "-----20260526223406--038",
+    "weight": 153.35,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--011",
+    "toId": "-----20260526223406--014",
+    "weight": 120.21,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--011",
+    "toId": "-----20260526223406--036",
+    "weight": 137.91,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--012",
+    "toId": "-----20260526223406--013",
+    "weight": 99.59,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--012",
+    "toId": "-----20260526223406--015",
+    "weight": 119.96,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--013",
+    "toId": "-----20260526223406--014",
+    "weight": 78.43,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--013",
+    "toId": "-----20260526223406--017",
+    "weight": 81.72,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--014",
+    "toId": "-----20260526223406--017",
+    "weight": 111.16,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--014",
+    "toId": "-----20260526223406--037",
+    "weight": 111.57,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--015",
+    "toId": "-----20260526223406--016",
+    "weight": 92.52,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--015",
+    "toId": "-----20260526223406--037",
+    "weight": 108.97,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--016",
+    "toId": "-----20260526223406--019",
+    "weight": 108.41,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--016",
+    "toId": "-----20260526223406--013",
+    "weight": 111.95,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--017",
+    "toId": "-----20260526223406--020",
+    "weight": 82.33,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--017",
+    "toId": "-----20260526223406--019",
+    "weight": 160.35,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--018",
+    "toId": "-----20260526223406--020",
+    "weight": 81.24,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--018",
+    "toId": "-----20260526223406--024",
+    "weight": 122.7,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--019",
+    "toId": "-----20260526223406--022",
+    "weight": 133.36,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--019",
+    "toId": "-----20260526223406--021",
+    "weight": 139.41,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--020",
+    "toId": "-----20260526223406--015",
+    "weight": 124.94,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--020",
+    "toId": "-----20260526223406--037",
+    "weight": 145.47,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--021",
+    "toId": "-----20260526223406--024",
+    "weight": 125.47,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--021",
+    "toId": "-----20260526223406--018",
+    "weight": 133.3,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--022",
+    "toId": "-----20260526223406--023",
+    "weight": 106.33,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--022",
+    "toId": "-----20260526223406--025",
+    "weight": 134.06,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--023",
+    "toId": "-----20260526223406--024",
+    "weight": 127.47,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--023",
+    "toId": "-----20260526223406--026",
+    "weight": 161.08,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--024",
+    "toId": "-----20260526223406--019",
+    "weight": 165.53,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--024",
+    "toId": "-----20260526223406--029",
+    "weight": 172.24,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--025",
+    "toId": "-----20260526223406--030",
+    "weight": 147.12,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--025",
+    "toId": "-----20260526223406--023",
+    "weight": 161.24,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--026",
+    "toId": "-----20260526223406--031",
+    "weight": 118.3,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--026",
+    "toId": "-----20260526223406--029",
+    "weight": 177.23,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--027",
+    "toId": "-----20260526223406--025",
+    "weight": 181.62,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--027",
+    "toId": "-----20260526223406--029",
+    "weight": 212.1,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--029",
+    "toId": "-----20260526223406--032",
+    "weight": 110.71,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--029",
+    "toId": "-----20260526223406--031",
+    "weight": 188.09,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--030",
+    "toId": "-----20260526223406--033",
+    "weight": 151.35,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--030",
+    "toId": "-----20260526223406--031",
+    "weight": 190.32,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--031",
+    "toId": "-----20260526223406--032",
+    "weight": 179.51,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--031",
+    "toId": "-----20260526223406--033",
+    "weight": 185.66,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--032",
+    "toId": "-----20260526223406--025",
+    "weight": 201.43,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--032",
+    "toId": "-----20260526223406--027",
+    "weight": 228.54,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--033",
+    "toId": "-----20260526223406--029",
+    "weight": 191.87,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--033",
+    "toId": "-----20260526223406--027",
+    "weight": 243.86,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--034",
+    "toId": "-----20260526223406--036",
+    "weight": 289.32,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--035",
+    "toId": "-----20260526223406--044",
+    "weight": 189.58,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--035",
+    "toId": "-----20260526223406--036",
+    "weight": 193.32,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--036",
+    "toId": "-----20260526223406--043",
+    "weight": 176.41,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--036",
+    "toId": "-----20260526223406--009",
+    "weight": 190.86,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--037",
+    "toId": "-----20260526223406--013",
+    "weight": 143.58,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--037",
+    "toId": "-----20260526223406--016",
+    "weight": 151.68,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--038",
+    "toId": "-----20260526223406--039",
+    "weight": 199.76,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--038",
+    "toId": "-----20260526223406--007",
+    "weight": 210.73,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--039",
+    "toId": "-----20260526223406--007",
+    "weight": 149.38,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--039",
+    "toId": "-----20260526223406--006",
+    "weight": 193.57,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--040",
+    "toId": "-----20260526223406--042",
+    "weight": 145.91,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--040",
+    "toId": "-----20260526223406--006",
+    "weight": 249.13,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--041",
+    "toId": "-----20260526223406--039",
+    "weight": 195.63,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--041",
+    "toId": "-----20260526223406--006",
+    "weight": 219.07,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--042",
+    "toId": "-----20260526223406--043",
+    "weight": 234.06,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--042",
+    "toId": "-----20260526223406--006",
+    "weight": 243.38,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--043",
+    "toId": "-----20260526223406--007",
+    "weight": 212.36,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--043",
+    "toId": "-----20260526223406--008",
+    "weight": 220.81,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--044",
+    "toId": "-----20260526223406--039",
+    "weight": 229.64,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  },
+  {
+    "fromId": "-----20260526223406--044",
+    "toId": "-----20260526223406--036",
+    "weight": 239.63,
+    "oneWay": false,
+    "forbidden": false,
+    "roadType": "PATH"
+  }
+]

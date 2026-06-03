@@ -1,0 +1,4 @@
+[
+  {"username": "admin", "passwordHash": "pbkdf2$120000$00112233445566778899aabbccddeeff$48375c481b3fb108a8a8ee8299290b3fe4f349646b4f9e7ce6749ef645cd5760", "role": "ADMIN"},
+  {"username": "guest", "passwordHash": "pbkdf2$120000$ffeeddccbbaa99887766554433221100$445cd08c97b58d227f2921162fdaf69e500c867c74254cb4b257f1d88b5a8d98", "role": "USER"}
+]
